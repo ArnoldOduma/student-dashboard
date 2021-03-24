@@ -25,7 +25,7 @@ name: Build and Deploy to Firebase
 on:
   push:
     branches:
-      - master
+      - main
       - dev
 
 jobs:
