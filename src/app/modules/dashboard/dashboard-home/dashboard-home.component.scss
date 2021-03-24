@@ -1,0 +1,12 @@
+
+.graph {
+  background: #ffffff;
+  //height: 500px;
+  border-radius: 25px;
+  position: relative;
+  >canvas{
+    //position: absolute;
+    bottom: 10px;
+    //height: 400px !important;
+  }
+}
