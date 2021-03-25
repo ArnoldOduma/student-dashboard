@@ -82,6 +82,7 @@ section {
 
   .toggle-icon {
     left: -5px;
+    transform: rotate(180deg);
   }
 }
 
@@ -95,6 +96,9 @@ section {
   border-radius: 50%;
   z-index: 2000;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.26);
+  &:hover{
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 760px) {
