@@ -77,7 +77,6 @@ export class DashboardComponent implements OnInit {
         );
         console.log(chartData);
 
-
         // @ts-ignore
         this.lineChartData =  [
           {data: chartData, label: 'Marks'},
