@@ -1,0 +1,74 @@
+<input type="text" placeholder="search">
+<div class="topDiv">
+  <h2>{{studentData.exam_name}}</h2>
+</div>
+<section class="top-detail-sec">
+  <div class="profile">
+    <div class="image-container">
+      <img [src]="studentData.student_photo" width="100%" [alt]="studentData.student_name">
+    </div>
+    <div class="bio-details">
+      <h3>{{studentData.student_name}}</h3>
+      <p><span>Admission</span>{{studentData.student_admission_number}}</p>
+      <p><span>Class</span>{{studentData.class_name}}</p>
+    </div>
+  </div>
+  <div class="center">
+    <div>
+      <p><span>Stream</span>Position</p>
+      <h4>{{studentData.stream_position.position}}<span>/{{studentData.stream_position.position_out_of}}</span></h4>
+    </div>
+    <div>
+      <p><span>Overall</span>Position</p>
+      <h4>{{studentData.overall_position.position}}<span>/{{studentData.overall_position.position_out_of}}</span></h4>
+    </div>
+  </div>
+  <div class="mean">
+    <h4>Mean</h4>
+    <div>
+      <p><span>Mean</span>Grade</p>
+      <h4>{{studentData.mean_grade}}</h4>
+    </div>
+    <div>
+      <p><span>Average</span>Score</p>
+      <h4>{{studentData.mean_marks.avg_score}}</h4>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="graph">
+    <h3>Student Performance Trend</h3>
+    <canvas baseChart
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [colors]="lineChartColors"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType"
+            [plugins]="lineChartPlugins">
+    </canvas>
+  </div>
+  <div class="tableCont">
+    <h3>Subject Results</h3>
+    <table>
+      <tr>
+        <th>Subject</th>
+        <th>Score</th>
+        <th>Grade</th>
+        <th>Rank</th>
+        <th>Deviation</th>
+        <th>Comment</th>
+      </tr>
+      <tr *ngFor="let data of studentData.subject_results">
+        <td>{{data.subject_name}}</td>
+        <td>{{data.score}}</td>
+        <td>{{data.grade}}</td>
+        <td>{{data.rank}} / {{data.rank_out_of}}</td>
+        <td>{{data.deviation}}</td>
+        <td>{{data.comment}}</td>
+      </tr>
+    </table>
+  </div>
+
+</section>
+

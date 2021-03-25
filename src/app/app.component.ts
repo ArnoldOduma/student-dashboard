@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dashboard';
+
+  isMobile = false;
+
+  toggleSidebar(){
+    this.isMobile = !this.isMobile;
+    console.log(this.isMobile);
+  }
 }
