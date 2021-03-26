@@ -1,9 +1,15 @@
 input {
-  padding: 10px 20px;
+  padding: 20px;
   width: 400px;
   max-width: 100%;
   border-radius: 40px;
   border: none;
+
+  &:hover,
+  &:active,
+  &:focus-within{
+    outline: none;
+  }
 }
 
 .topDiv {
@@ -183,7 +189,8 @@ input {
     padding: 20px;
     overflow: auto;
     margin: 10px 0;
-    width: calc(50% - 10px);
+    //width: calc(50% - 10px);
+    width: 100%;
   }
 
   .tableCont {
@@ -233,7 +240,7 @@ input {
       margin: 20px 0;
 
       > div {
-        width: 45%;
+        width: calc(50% - 10px);
         height: 100%;
       }
     }

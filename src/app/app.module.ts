@@ -22,7 +22,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     ChartsModule,
     RouterModule.forRoot(DASHBOARD_ROUTES),
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     HttpClientModule
