@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Color, Label} from "ng2-charts";
-import {ChartDataSets, ChartOptions} from "chart.js";
+import {ChartDataSets, ChartOptions, ChartType} from "chart.js";
 import {ApiService} from "../services/api.service";
 import {
   MeanMarks,
@@ -10,7 +10,7 @@ import {
   StudentPerformanceOverTime,
   SubjectResult
 } from "../model/dataModel";
-import {forEachToken} from "tslint";
+
 
 @Component({
   selector: 'app-dashboard',
@@ -38,6 +38,34 @@ export class DashboardComponent implements OnInit {
   public lineChartLegend = true;
   public lineChartType = 'line';
   public lineChartPlugins = [];
+
+  // Pie
+  public pieChartOptions: ChartOptions = {
+    responsive: true,
+    legend: {
+      position: 'top',
+    },
+    plugins: {
+      datalabels: {
+        formatter: (value, ctx) => {
+          const label = ctx.chart.data.labels[ctx.dataIndex];
+          return label;
+        },
+      },
+    }
+  };
+  public pieChartLabels: Label[] = [['Download', 'Sales'], ['In', 'Store', 'Sales'], 'Mail Sales'];
+  public pieChartData: number[] = [300, 500, 100];
+  public pieChartType: ChartType = 'pie';
+  public pieChartLegend = true;
+  // public pieChartPlugins = [pluginDataLabels];
+  public pieChartColors = [
+    {
+      backgroundColor: ['rgb(67,171,73)', 'rgba(0,255,0,0.3)', 'rgb(0,162,232)',
+        'rgb(0,232,25)', 'rgb(153,0,232)', 'rgb(0,162,232)', 'rgb(178,232,0)',
+        'rgb(0,48,232)', 'rgb(120,14,232)', 'rgb(232,0,85)', 'rgb(232,88,0)'],
+    },
+  ];
 
   constructor(
     private apiService: ApiService
@@ -68,17 +96,30 @@ export class DashboardComponent implements OnInit {
       res => {
         console.log(res);
         this.studentData = res;
-        const chartData:any [] = [];
+        // linechart
+        const chartData: any [] = [];
         const labels = [];
-        this.studentData.student_performance_over_time.forEach( e => {
+        this.studentData.student_performance_over_time.forEach(e => {
             chartData.push(e.avg_score);
             labels.push(e.exam_name);
           }
         );
         console.log(chartData);
 
+        // pie chart
+        const pieData: any[] = [];
+        const pieLabels: any[] = [];
+        this.studentData.subject_results.forEach(e => {
+          pieData.push(e.score);
+          pieLabels.push(e.subject_name)
+        });
+
+        this.pieChartData = pieData;
+        this.pieChartLabels = pieLabels;
+
+
         // @ts-ignore
-        this.lineChartData =  [
+        this.lineChartData = [
           {data: chartData, label: 'Marks'},
         ];
         this.lineChartLabels = labels;

@@ -148,6 +148,14 @@ input {
   border-radius: 25px;
   position: relative;
   padding: 20px;
+  margin: 10px 0 20px 0;
+
+  > h3 {
+    display: block;
+    color: #43AB49;
+    padding: 20px 0;
+    font-size: 25px;
+  }
 
   > canvas {
     //position: absolute;
@@ -156,34 +164,57 @@ input {
   }
 }
 
-.tableCont {
-  background: #ffffff;
-  width: 100%;
-  min-height: 300px;
-  border-radius: 25px;
-  padding: 20px;
-  overflow: auto;
-  margin: 20px 0;
+.subject-sec {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 
-  > table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-    //border: 1px solid #ddd;
+  h3 {
+    display: block;
+    color: #43AB49;
+    padding: 20px 0;
+    font-size: 25px;
+  }
 
-    th {
-      text-align: left;
-      padding: 10px;
+  > div {
+    background: #ffffff;
+    min-height: 300px;
+    border-radius: 25px;
+    padding: 20px;
+    overflow: auto;
+    margin: 10px 0;
+    width: calc(50% - 10px);
+  }
+
+  .tableCont {
+
+    > table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+      //border: 1px solid #ddd;
+
+      th {
+        text-align: left;
+        padding: 10px;
+      }
+
+      td {
+        padding: 10px;
+        min-width: 100px;
+        font-size: 15px;
+      }
+
+      tr:nth-child(even) {
+        background-color: rgba(67, 171, 73, 0.11);
+      }
     }
 
-    td {
-      padding: 10px;
-      min-width: 100px;
-      font-size: 15px;
-    }
+  }
 
-    tr:nth-child(even) {
-      background-color: rgba(67, 171, 73, 0.11);
+  @media (max-width: 760px) {
+    > div {
+      width: 100%;
     }
   }
 

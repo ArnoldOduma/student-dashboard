@@ -36,6 +36,43 @@
   </div>
 </section>
 <section>
+  <div class="subject-sec">
+    <div class="tableCont">
+      <h3>Subject Results</h3>
+      <table>
+        <tr>
+          <th>Subject</th>
+          <th>Score</th>
+          <th>Grade</th>
+          <th>Rank</th>
+          <th>Deviation</th>
+          <th>Comment</th>
+        </tr>
+        <tr *ngFor="let data of studentData.subject_results">
+          <td>{{data.subject_name}}</td>
+          <td>{{data.score}}</td>
+          <td>{{data.grade}}</td>
+          <td>{{data.rank}} / {{data.rank_out_of}}</td>
+          <td>{{data.deviation}}</td>
+          <td>{{data.comment}}</td>
+        </tr>
+      </table>
+
+    </div>
+    <div class="pie">
+      <h3>Subject comparison</h3>
+      <canvas baseChart
+              [data]="pieChartData"
+              [labels]="pieChartLabels"
+              [chartType]="pieChartType"
+              [options]="pieChartOptions"
+              [colors]="pieChartColors"
+              [legend]="pieChartLegend">
+      </canvas>
+    </div>
+  </div>
+
+
   <div class="graph">
     <h3>Student Performance Trend</h3>
     <canvas baseChart
@@ -47,30 +84,6 @@
             [chartType]="lineChartType"
             [plugins]="lineChartPlugins">
     </canvas>
-  </div>
-  <div class="tableCont">
-    <h3>Subject Results</h3>
-    <table>
-      <tr>
-        <th>Subject</th>
-        <th>Score</th>
-        <th>Grade</th>
-        <th>Rank</th>
-        <th>Deviation</th>
-        <th>Comment</th>
-      </tr>
-      <tr *ngFor="let data of studentData.subject_results">
-        <td>{{data.subject_name}}</td>
-        <td>{{data.score}}</td>
-        <td>{{data.grade}}</td>
-        <td>{{data.rank}} / {{data.rank_out_of}}</td>
-        <td>{{data.deviation}}</td>
-        <td>{{data.comment}}</td>
-      </tr>
-    </table>
-  </div>
-  <div class="pie">
-
   </div>
 
 </section>
